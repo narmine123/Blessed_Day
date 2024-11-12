@@ -1,0 +1,22 @@
+.container{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content:flex-start
+}
+.container img{
+    width: 100px;
+    height: 100px;
+    padding-left: 5px;
+    padding-top: 0px;
+}
+
+.mot{
+    padding: 1200px;
+    padding-top: 0px;
+    display: flex;
+    white-space: nowrap;
+    gap: 10px; 
+
+
+}
