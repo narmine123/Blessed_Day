@@ -1,0 +1,12 @@
+.body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    background: url('/assets/back1.gif ');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }

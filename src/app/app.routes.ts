@@ -7,4 +7,5 @@ export const routes: Routes = [
     { path: '', component: WelcomeComponent },  
     { path: 'to-do', component: ToDoComponent },
     { path: 'skill', component: SkillComponent },
+    { path: 'welcome', component: WelcomeComponent }, 
 ];
