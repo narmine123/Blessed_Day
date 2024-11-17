@@ -1,11 +1,24 @@
-<div class="container">
-    <img src="assets/logggo.png" alt="impossible d'ouvrir image" (click)="goToWelcome()">
-    <div class="mot">
-        <button     (click)="goTodo()"           >To Do</button>
-        <button   (click)="goToSkill()"  >Skill</button>
+<nav class="navbar "    >
+    <div class="container-fluid" style="background-color: transparent;">
+      <a class="navbar-brand" type="button" (click)="goToWelcome()" style="font-size: 30px;">
+        <img src="assets/logggo.png" alt="impossible d'ouvrir image" (click)="goToWelcome()" width="80" height="78" class="d-inline-block align-text-top" style="margin-top: -15px; ">
+        Blessed Day
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"style="margin-right: 20px;">
+        <span class="navbar-toggler-icon" ></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb- mb-lg-0">
+          <li class="nav-item">
+            <button (click)="goTodo()" class="nav-link active" aria-current="page">To Do</button>
+          </li>
+          <li class="nav-item">
+            <button (click)="goToSkill()" class="nav-link">Skill</button>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
 
-
-
-</div>
+  
