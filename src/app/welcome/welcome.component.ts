@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToDoComponent } from '../to-do/to-do.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-welcome',
   standalone: true,
-  imports:[],
+  imports:[HttpClientModule],
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css'] 
 })

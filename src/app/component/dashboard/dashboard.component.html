@@ -1,43 +1,49 @@
-<div class="container-fluid ">
-    <div class="container " >
-        <div class="row mt-4 "style="height: 500px;"    >
-            <div class="col"></div>
-            <div class="col-md-6 bg-white shadow" >
-
-                <div  class="card bg-warning mt-4">
-                    <h4 class="text-white ps-3 pt-2 pb-2">To Do List</h4>
-                </div>
-
-                <div class="shadow">
-                    <div class="input-group p-4">
-                        <input type="text" class="form-control" placeholder="Enter task" >
-                        <button class="btn btn-outline-success" type="button" (click)="toggleTaskDetails()" >+</button>
-                      </div>
-                </div>
-                <h4 class="text-primary mt-4"  >Tasks :</h4>
-                <div style="overflow-y: auto; height: 350px;">
-                    <div class="m-3">
-                        <div class="p-2 shadow border">
-                            <div class="input-group row ps-3">
-                                <div class="card col-md-10"> Subscribe to code logic</div>
-                                <button class="btn btn-outline-primary col">e</button>
-                                <div class="btn btn-outline-danger col">x</div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-
-
+<div class="container-fluid">
+    <div class="container">
+      <div class="row mt-4" style="height: 500px;">
+        <!-- Center content using flexbox -->
+        <div class="col"></div>
+        <div class="col-md-6 bg-white shadow">
+  
+          <!-- Card for Title -->
+          <div class="card bg-warning mt-4">
+            <h4 class="text-white ps-3 pt-2 pb-2">ToDo List</h4>
+          </div>
+  
+          <!-- Input group to add new task -->
+          <div class="shadow">
+            <div class="input-group p-4">
+              <input type="text" class="form-control" placeholder="Enter task" [(ngModel)]="taskInput">
+              <button class="btn btn-outline-success" type="button" (click)="addTache()">+</button>
             </div>
-            <div class="col"></div>
-
-            
-
-            
+          </div>
+  
+          <!-- Display tasks -->
+          <h4 class="text-primary mt-4">Tasks:</h4>
+          <div style="overflow-y: auto; height: 350px;">
+            <div *ngFor="let task of taches" class="m-3">
+              <div class="p-2 shadow border d-flex justify-content-between align-items-center">
+                
+                <!-- Task description -->
+                <div class="col-md-9">
+                  <span>{{ task.title }}</span>
+                </div>
+  
+                <!-- Checkbox to mark task as done -->
+                <input type="checkbox" class="todo-checkbox" [(ngModel)]="task.completed">
+  
+                <!-- Edit and Delete buttons -->
+                <div class="btn-group">
+                  <button class="btn btn-outline-primary" (click)="editTask(task)">e</button>
+                  <button class="btn btn-outline-danger" (click)="deleteTask(task.id)">x</button>
+                </div>
+              </div>
+            </div>
+          </div>
+  
         </div>
+        <div class="col"></div>
+      </div>
     </div>
-</div>
+  </div>
+  

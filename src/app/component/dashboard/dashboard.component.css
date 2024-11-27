@@ -1,3 +1,10 @@
 .container-fluid{
    padding-right: 700px;
 }
+
+ 
+ .todo-checkbox {
+   margin-left: 20px;
+   padding-right: 10px;
+ }
+ 
