@@ -12,12 +12,28 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent {
+export class DashboardComponent  implements OnInit{
   taskInput: string = ''; // Titre de la tâche
   taches: any[] = []; // Liste des tâches
 
   constructor(private todoService: TodoService) {}
  
+  ngOnInit(): void {
+    this.loadTaches(); // Charger les tâches au démarrage du composant
+  }
+
+  // Méthode pour charger toutes les tâches
+  loadTaches(): void {
+    this.todoService.getTache().subscribe(
+      (data) => {
+        this.taches = data; // Assurez-vous que la réponse est un tableau de tâches
+      },
+      (error) => {
+        console.error('Erreur lors du chargement des tâches', error);
+        alert('Erreur lors du chargement des tâches.');
+      }
+    );
+  }
   addTache() {
     if (!this.taskInput.trim()) {
       alert('Veuillez entrer un titre valide pour la tâche.');
@@ -54,25 +70,44 @@ export class DashboardComponent {
     );
 }
 
-  editTask(task: any) {
-    // Fonction pour l'édition de la tâche
-    console.log('Edit task:', task);
-    // Logique d'édition (par exemple, ouvrir un modal avec le détail de la tâche à modifier)
-  }
+editTask(task: any) {
+  // Marquer la tâche comme en cours d'édition
+  task.isEditing = true;
+  
+}
+saveTask(task: any) {
+  // Supprime le mode édition et envoie les modifications au backend
+  task.isEditing = false;
 
-  deleteTask(taskId: number) {
-    // Fonction pour la suppression de la tâche
-    this.todoService.deleteTache(taskId).subscribe(
-      () => {
-        this.taches = this.taches.filter(t => t.id !== taskId); // Retirer la tâche de la liste après suppression
-        console.log('Tâche supprimée avec succès');
-      },
-      (error) => {
-        console.error('Erreur lors de la suppression de la tâche :', error);
-        alert('Erreur lors de la suppression de la tâche.');
-      }
-    );
-  }
+  // Appel API pour mettre à jour la tâche sur le backend
+  this.todoService.updateTache(task).subscribe(
+    (response) => {
+      console.log('Tâche mise à jour avec succès :', response);
+      alert('La tâche a été mise à jour.');
+    },
+    (error) => {
+      console.error('Erreur lors de la mise à jour de la tâche :', error);
+      alert('Erreur lors de la mise à jour de la tâche.');
+    }
+  );
+}
+
+
+
+deleteTask(taskId: number): void {
+  // Appeler le service pour supprimer la tâche avec l'ID donné
+  this.todoService.deleteTache(taskId).subscribe(
+    () => {
+      // Supprimer la tâche de la liste locale après la suppression via l'API
+      this.taches = this.taches.filter(task => task.id !== taskId);
+      console.log("la tache est supprimée")
+    },
+    error => {
+      console.error("Erreur lors de la suppression de la tâche", error);
+    }
+  );
+}
+
 }
 
 

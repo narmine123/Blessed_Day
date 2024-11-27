@@ -51,15 +51,22 @@ export class TodoService {
     getFakeTache(){
       return this.taches;
     }
-    /*getTacheById(id : number) : Tache {
-      const tache = this.taches.find( personne => {
-        return tache.id = id;
-      })
-    }*/
+  
+
+       // Récupérer une tâche par son ID
+  getTacheById(id: number): Observable<Tache> {
+    return this.http.get<Tache>(`${this.link}/${id}`);
+  }
+
+  // Mettre à jour une tâche existante
+  updateTache(task: Tache): Observable<Tache> {
+    return this.http.patch<Tache>(`${this.link}/${task.id}`, task);
+  }
     addTache(tache : Tache): Observable<any> {
       return this.http.post(this.link, tache);
     }
     deleteTache(taskId: number): Observable<void> {
       return this.http.delete<void>(`${this.link}/${taskId}`); // Suppression de la tâche via l'API
+
     }
   }

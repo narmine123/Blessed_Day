@@ -1,49 +1,72 @@
 <div class="container-fluid">
-    <div class="container">
-      <div class="row mt-4" style="height: 500px;">
-        <!-- Center content using flexbox -->
-        <div class="col"></div>
-        <div class="col-md-6 bg-white shadow">
-  
-          <!-- Card for Title -->
-          <div class="card bg-warning mt-4">
-            <h4 class="text-white ps-3 pt-2 pb-2">ToDo List</h4>
+  <div class="container">
+    <div class="row mt-4" style="height: 500px;">
+      <div class="col"></div>
+      <div class="col-md-6 bg-white shadow">
+
+        <!-- Card for Title -->
+        <div class="card bg-warning mt-4">
+          <h4 class="text-white ps-3 pt-2 pb-2">ToDo List</h4>
+        </div>
+
+        <!-- Input group to add new task -->
+        <div class="shadow">
+          <div class="input-group p-4">
+            <input type="text" class="form-control" placeholder="Enter task" [(ngModel)]="taskInput">
+            <button class="btn btn-outline-success" type="button" (click)="addTache()">+</button>
           </div>
-  
-          <!-- Input group to add new task -->
-          <div class="shadow">
-            <div class="input-group p-4">
-              <input type="text" class="form-control" placeholder="Enter task" [(ngModel)]="taskInput">
-              <button class="btn btn-outline-success" type="button" (click)="addTache()">+</button>
-            </div>
-          </div>
-  
-          <!-- Display tasks -->
-          <h4 class="text-primary mt-4">Tasks:</h4>
-          <div style="overflow-y: auto; height: 350px;">
-            <div *ngFor="let task of taches" class="m-3">
-              <div class="p-2 shadow border d-flex justify-content-between align-items-center">
-                
-                <!-- Task description -->
-                <div class="col-md-9">
-                  <span>{{ task.title }}</span>
+        </div>
+
+        <!-- Display tasks -->
+        <h4 class="text-primary mt-4">Tasks:</h4>
+        <div style="overflow-y: auto; height: 350px;">
+          <div *ngFor="let task of taches" class="m-3">
+            <div class="p-2 shadow border d-flex justify-content-between align-items-center">
+
+              <!-- Task description (if not editing) -->
+              <div class="col-md-9">
+                <span *ngIf="!task.isEditing">{{ task.title }}</span>
+                <div *ngIf="task.isEditing">
+                  <input 
+                    type="text" 
+                    [(ngModel)]="task.title" 
+                    class="form-control" 
+                    placeholder="Modifier la tâche" 
+                  />
                 </div>
-  
-                <!-- Checkbox to mark task as done -->
-                <input type="checkbox" class="todo-checkbox" [(ngModel)]="task.completed">
-  
-                <!-- Edit and Delete buttons -->
-                <div class="btn-group">
-                  <button class="btn btn-outline-primary" (click)="editTask(task)">e</button>
-                  <button class="btn btn-outline-danger" (click)="deleteTask(task.id)">x</button>
-                </div>
+              </div>
+
+              <!-- Checkbox to mark task as done -->
+              <input type="checkbox" class="todo-checkbox" [(ngModel)]="task.completed">
+
+              <!-- Edit and Delete buttons -->
+              <div class="btn-group">
+                <button class="btn btn-outline-primary btn-sm" (click)="editTask(task)">e</button>
+                <button class="btn btn-outline-danger btn-sm" (click)="deleteTask(task.id)">x</button>
+              </div>
+
+              <!-- Buttons for task edit (validation or cancel) -->
+              <div *ngIf="task.isEditing" class="task-edit-container mt-2">
+                <button 
+                  class="btn btn-success me-2" 
+                  (click)="saveTask(task)" 
+                  title="Sauvegarder"
+                >
+                  ✔
+                </button>
+                <button 
+                  class="btn btn-danger" 
+                  (click)="deleteTask(task.id)" 
+                  title="Annuler"
+                >
+                  ✖
+                </button>
               </div>
             </div>
           </div>
-  
         </div>
-        <div class="col"></div>
       </div>
+      <div class="col"></div>
     </div>
   </div>
-  
+</div>
