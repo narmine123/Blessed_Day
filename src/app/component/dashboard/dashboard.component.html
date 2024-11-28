@@ -3,7 +3,6 @@
     <div class="row mt-4" style="height: 500px;">
       <div class="col"></div>
       <div class="col-md-6 bg-white shadow">
-
         <!-- Card for Title -->
         <div class="card bg-warning mt-4">
           <h4 class="text-white ps-3 pt-2 pb-2">ToDo List</h4>
@@ -22,7 +21,6 @@
         <div style="overflow-y: auto; height: 350px;">
           <div *ngFor="let task of taches" class="m-3">
             <div class="p-2 shadow border d-flex justify-content-between align-items-center">
-
               <!-- Task description (if not editing) -->
               <div class="col-md-9">
                 <span *ngIf="!task.isEditing">{{ task.title }}</span>
@@ -31,18 +29,17 @@
                     type="text" 
                     [(ngModel)]="task.title" 
                     class="form-control" 
-                    placeholder="Modifier la tâche" 
+                    placeholder="Update the task" 
                   />
                 </div>
-              </div>
+                <!-- Checkbox to mark task as done -->
+                <input type="checkbox" class="todo-checkbox" [(ngModel)]="task.completed">
 
-              <!-- Checkbox to mark task as done -->
-              <input type="checkbox" class="todo-checkbox" [(ngModel)]="task.completed">
-
-              <!-- Edit and Delete buttons -->
-              <div class="btn-group">
-                <button class="btn btn-outline-primary btn-sm" (click)="editTask(task)">e</button>
-                <button class="btn btn-outline-danger btn-sm" (click)="deleteTask(task.id)">x</button>
+                <!-- Edit and Delete buttons -->
+                <div class="btn-group">
+                  <button class="btn btn-outline-primary btn-sm" (click)="editTask(task)">e</button>
+                  <button class="btn btn-outline-danger btn-sm" (click)="deleteTask(task.id)">x</button>
+                </div>
               </div>
 
               <!-- Buttons for task edit (validation or cancel) -->
@@ -50,17 +47,39 @@
                 <button 
                   class="btn btn-success me-2" 
                   (click)="saveTask(task)" 
-                  title="Sauvegarder"
+                  title="Save"
                 >
                   ✔
                 </button>
                 <button 
                   class="btn btn-danger" 
                   (click)="deleteTask(task.id)" 
-                  title="Annuler"
+                  title="Cancel"
                 >
                   ✖
                 </button>
+                <!-- Button to add subtask -->
+                <button 
+                  class="btn btn-outline-primary mt-2" 
+                  (click)="showSubTaskInput(task)">
+                  Add Sub-task
+                </button>
+
+                <!-- Input for new sub-task (visible when clicking 'Add Sub-task') -->
+                <div *ngIf="task.showSubTaskInput" class="mt-3">
+                  <input 
+                    type="text" 
+                    [(ngModel)]="newSubTaskTitle" 
+                    class="form-control" 
+                    placeholder="Enter sub-task">
+                  <button 
+                    class="btn btn-outline-primary mt-2" 
+                    (click)="addSubTask(task)">
+                    Add
+                  </button>
+                </div>
+
+                
               </div>
             </div>
           </div>

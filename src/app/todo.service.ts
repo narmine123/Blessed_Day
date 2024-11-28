@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Tache } from './Tache';
+import { SubTask } from './SubTask';
 
 @Injectable({
   providedIn: 'root'
@@ -69,4 +70,19 @@ export class TodoService {
       return this.http.delete<void>(`${this.link}/${taskId}`); // Suppression de la tâche via l'API
 
     }
+    /*addSubTask(subTask: SubTask) : Observable<any> {
+      return  this.http.post('http://localhost:3000/tache/subtasks', subTask);
+    }*/
+    /*addSubTask(subTask: SubTask): Observable<any> {
+      return this.http.post('http://localhost:3000/tache/subtasks', subTask, {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      });
+    }*/
+    addSubTask(subTask: SubTask): Observable<any> {
+      return this.http.post('http://localhost:3000/tache/subtasks', subTask);
+    }
+    
+    
+   
+    
   }
