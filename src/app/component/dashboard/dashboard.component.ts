@@ -111,7 +111,7 @@ export class DashboardComponent implements OnInit {
   }
 
   // Fonction pour ajouter une sous-tâche à une tâche spécifique
-  addSubTask(task: SubTask): void {
+  addSubTask(task: Tache): void {
     // Validation du titre de la sous-tâche
     if (!this.newSubTaskTitle.trim()) {
       alert('Veuillez entrer un titre valide pour la sous-tâche.');
@@ -127,7 +127,6 @@ export class DashboardComponent implements OnInit {
 
     console.log('Payload envoyé :', {
       title: this.newSubTaskTitle,
-      completed: false,
       taskId: task.id,
     });
 
