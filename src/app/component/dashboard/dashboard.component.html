@@ -23,7 +23,10 @@
             <div class="p-2 shadow border d-flex justify-content-between align-items-center">
               <!-- Task description (if not editing) -->
               <div class="col-md-9">
-                <span *ngIf="!task.isEditing">{{ task.title }}</span>
+                  <!-- Checkbox to mark task as done and show subtasks -->
+               <input type="checkbox" class="todo-checkbox" [(ngModel)]="task.completed">
+                &nbsp;<span *ngIf="!task.isEditing">{{ task.title }}</span>
+                 
                 <div *ngIf="task.isEditing">
                   <input 
                     type="text" 
@@ -32,13 +35,20 @@
                     placeholder="Update the task" 
                   />
                 </div>
-                <!-- Checkbox to mark task as done -->
-                <input type="checkbox" class="todo-checkbox" [(ngModel)]="task.completed">
+               
 
                 <!-- Edit and Delete buttons -->
-                <div class="btn-group">
+                &nbsp;&nbsp;<div class="btn-group">
                   <button class="btn btn-outline-primary btn-sm" (click)="editTask(task)">e</button>
                   <button class="btn btn-outline-danger btn-sm" (click)="deleteTask(task.id)">x</button>
+                </div>
+                <!-- List of subtasks (shown when task is marked as completed) -->
+                <div *ngIf="task.completed && task.subtasks && task.subtasks.length > 0" class="subtasks-list mt-3">
+                  <ul>
+                    <li *ngFor="let subtask of task.subtasks">
+                      {{ subtask.title }}
+                    </li>
+                  </ul>
                 </div>
               </div>
 
@@ -58,31 +68,31 @@
                 >
                   ✖
                 </button>
-                <!-- Button to add subtask -->
+              </div>
+
+              <!-- Button to add sub-task -->
+              <button 
+                class="btn btn-outline-primary mt-2" 
+                (click)="showSubTaskInput(task)">
+                Add Sub-task
+              </button>
+
+              <!-- Input for new sub-task (visible when clicking 'Add Sub-task') -->
+              <div *ngIf="task.showSubTaskInput" class="mt-3">
+                <input 
+                  type="text" 
+                  [(ngModel)]="newSubTaskTitle" 
+                  class="form-control" 
+                  placeholder="Enter sub-task">
                 <button 
                   class="btn btn-outline-primary mt-2" 
-                  (click)="showSubTaskInput(task)">
-                  Add Sub-task
+                  (click)="addSubTask(task)">
+                  Add
                 </button>
-
-                <!-- Input for new sub-task (visible when clicking 'Add Sub-task') -->
-                <div *ngIf="task.showSubTaskInput" class="mt-3">
-                  <input 
-                    type="text" 
-                    [(ngModel)]="newSubTaskTitle" 
-                    class="form-control" 
-                    placeholder="Enter sub-task">
-                  <button 
-                    class="btn btn-outline-primary mt-2" 
-                    (click)="addSubTask(task)">
-                    Add
-                  </button>
-                </div>
-
-                
-
-                
               </div>
+              
+
+              
             </div>
           </div>
         </div>

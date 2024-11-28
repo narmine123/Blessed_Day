@@ -1,3 +1,5 @@
+import { SubTask } from "./SubTask";
+
 export class Tache {
     id: number;
     title: string;
@@ -11,6 +13,8 @@ export class Tache {
     cycleTime: Date;
     leadTime: Date;
     progrès: string;
+    subtasks: SubTask[] = []; // Initialisation avec un tableau vide
+
 
     constructor(
         id = 0,
@@ -24,7 +28,8 @@ export class Tache {
         deadline = new Date(),
         cycleTime = new Date(),
         leadTime = new Date(),
-        progrès = ''
+        progrès = '',
+        subtasks: SubTask[] = []
     ) {
         this.id = id;
         this.title = title;
@@ -38,5 +43,6 @@ export class Tache {
         this.cycleTime = cycleTime;
         this.leadTime = leadTime;
         this.progrès = progrès;
+        this.subtasks = subtasks;
     }
 }

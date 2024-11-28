@@ -36,7 +36,7 @@ export class DashboardComponent implements OnInit {
         alert('Erreur lors du chargement des tâches.');
       }
     );
-  }
+}
 
   addTache() {
     if (!this.taskInput.trim()) {
@@ -110,33 +110,24 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  // Fonction pour ajouter une sous-tâche à une tâche spécifique
   addSubTask(task: Tache): void {
-    // Validation du titre de la sous-tâche
     if (!this.newSubTaskTitle.trim()) {
       alert('Veuillez entrer un titre valide pour la sous-tâche.');
       return;
     }
-
-    // Créer une nouvelle sous-tâche
-    const newSubTask = new SubTask(
-      0,  // ID initialisé à 0, l'API devrait gérer l'ID
-      this.newSubTaskTitle,  // Titre de la sous-tâche
-      task.id  // Référence à la tâche à laquelle cette sous-tâche appartient
-    );
-
-    console.log('Payload envoyé :', {
-      title: this.newSubTaskTitle,
-      taskId: task.id,
-    });
-
-    // Envoyer la sous-tâche au backend via le service
+  
+    const newSubTask = new SubTask(0, this.newSubTaskTitle, task.id);
+  
     this.todoService.addSubTask(newSubTask).subscribe(
-      (response) => {
+      (response: SubTask) => {
         console.log('Sous-tâche ajoutée avec succès :', response);
-        // Ajouter la sous-tâche retournée par le backend à la tâche
-        this.tasks.push(response);
-
+  
+        // Ajouter la sous-tâche à la liste des sous-tâches de la tâche
+        if (!task.subtasks) {
+          task.subtasks = [];
+        }
+        task.subtasks.push(response);
+  
         // Réinitialiser le champ de saisie
         this.newSubTaskTitle = '';
       },
@@ -146,7 +137,7 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
-    
+  
 
   // Fonction pour afficher ou masquer l'input de sous-tâche pour chaque tâche
   showSubTaskInput(task: any): void {
