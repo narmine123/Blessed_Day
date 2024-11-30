@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col">
+      <ol class="list-group">
+        <li
+          *ngFor="let skill of skills"
+          class="list-group-item">
+          {{skill.name}} : {{skill.objectif}} : {{skill.level}}
+          <i (click)="deleteSkill(skill)" class="bi bi-trash2-fill"></i>
+        </li>
+      </ol>
+    </div>
+    <div class="col">
+      name:<input [(ngModel)]="skill.name"  type="text" class="form-control">
+      objectif:<input [(ngModel)]="skill.objectif"   type="text" class="form-control">
+      <button
+        [disabled]="!skill.name.trim() || !skill.objectif.trim()"
+        (click)="addSkill()"
+        class="btn btn-primary m-2">
+        add Skill
+      </button>
+    </div>
+  </div>
+
+  

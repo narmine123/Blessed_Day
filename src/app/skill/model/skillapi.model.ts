@@ -1,0 +1,7 @@
+export interface SkillApi {
+    userId: number;
+    id: number;
+    title: string;
+    completed: boolean;
+  }
+  
