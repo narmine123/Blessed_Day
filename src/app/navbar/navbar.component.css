@@ -1,3 +1,10 @@
+
+a {
+    font-weight: bold; /* Poids du texte */
+    background: linear-gradient(45deg, #ce93d8, #8356d4); /* Dégradé de couleur */
+    -webkit-background-clip: text; /* Applique le fond en dégradé au texte */
+    color: transparent; 
+}
 /*.container{
     position: relative;
     height: 50px;
@@ -27,10 +34,3 @@
 
 
 }*/
-
-a {
-    font-weight: bold; /* Poids du texte */
-    background: linear-gradient(45deg, #ce93d8, #8356d4); /* Dégradé de couleur */
-    -webkit-background-clip: text; /* Applique le fond en dégradé au texte */
-    color: transparent; 
-}

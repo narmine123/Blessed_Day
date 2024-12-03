@@ -1,0 +1,55 @@
+
+.container-fluid{
+    padding-right: 700px;
+ }
+ 
+  
+  .todo-checkbox {
+    margin-left: 20px;
+    padding-right: 10px;
+  }
+ 
+  .task-container {
+   padding: 10px;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+   margin-bottom: 15px;
+   background-color: #f9f9f9;
+ }
+ 
+ .task-title {
+   display: flex;
+   justify-content: space-between; /* Écarte le texte et les boutons */
+   align-items: center;
+ }
+ 
+ .task-edit-container {
+   margin-top: 10px;
+   display: flex;
+   flex-direction: column; /* Force les éléments à s'aligner en colonne */
+ }
+ 
+ .task-edit-container .button-group {
+   display: flex;
+   justify-content: flex-start; /* Aligne les boutons à gauche */
+ }
+ 
+ .task-edit-container .button-group button {
+   width: 40px;
+   height: 40px;
+   font-size: 16px;
+ }
+ 
+ .body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    background: url('/assets/back1.gif ');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+ 

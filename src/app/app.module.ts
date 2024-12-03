@@ -7,6 +7,7 @@ import { ToDoComponent } from './to-do/to-do.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TodoService } from './todo.service';
+import { SkillService } from './Skill.service';
 
 @NgModule({
  
@@ -16,7 +17,7 @@ import { TodoService } from './todo.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [TodoService],
+  providers: [TodoService,SkillService],
   
 
   bootstrap: [AppComponent]
