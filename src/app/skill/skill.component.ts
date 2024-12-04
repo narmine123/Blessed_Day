@@ -89,13 +89,15 @@ export class SkillComponent implements OnInit {
   increaseProgress(skill: Skill): void {
     if (skill.progress < 100) {
       const newProgress = Math.min(skill.progress + 10, 100); // Limite à 100%
-      this.skillService.updateProgress(skill.id, newProgress).subscribe(() => {
+      this.skillService.updateProgress(skill.id,skill.niveauAct, newProgress).subscribe(() => {
         skill.progress = newProgress; // Met à jour localement
       });
     }
-
     // Déclencher une fête si le progrès atteint 100%
-    if (skill.progress >= 100) {
+    if (skill.progress == 100) {
+      skill.niveauAct +=1;
+      console.log('Le niveau est incrément :', skill.niveauAct);
+
       this.showCelebration();
     }
   }

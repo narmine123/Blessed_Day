@@ -62,9 +62,22 @@ export class SkillService {
     return this.http.get<Skill[]>(this.link);
   }
  // Mettre à jour le progrès d'une compétence
- updateProgress(skillId: number, progress: number): Observable<any> {
-  return this.http.patch(`${this.link}/${skillId}`, { progress });
+ /*updateProgress(skillId: number, niveauAct: number, progress: number): Observable<any> {
+  return this.http.patch(`${this.link}/${skillId}`, {  niveauAct ,progress});
 }
+*/
+updateProgress(skillId: number, niveauAct: number, progress: number): Observable<any> {
+  // Incrémente le niveau si progress atteint 100%
+  if (progress === 100) {
+    niveauAct++; // Incrémenter le niveau actuel
+  }
+
+  // Envoyer les deux données: progress et niveauAct au backend
+  return this.http.patch(`${this.link}/${skillId}`, { niveauAct, progress });
+}
+
+
+
     
     
    

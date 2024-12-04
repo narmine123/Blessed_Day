@@ -10,7 +10,8 @@ import { TodoService } from './todo.service';
 import { SkillService } from './Skill.service';
 
 @NgModule({
- 
+  declarations: [AppComponent],
+
   imports: [
     BrowserModule,
     AppRoutingModule ,
