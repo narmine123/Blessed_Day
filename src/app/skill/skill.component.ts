@@ -24,7 +24,7 @@ export class SkillComponent implements OnInit {
   }
 
   loadSkills(): void {
-    this.skillService.getSkill().subscribe(
+    this.skillService.getAllSkills().subscribe(
       (response: Skill[]) => {
         this.skills = response;
       },
@@ -40,7 +40,7 @@ export class SkillComponent implements OnInit {
       return;
     }
 
-    const newSkill = new Skill(0, this.skillInput, 'Nouvelle compétence ajoutée',1);
+    const newSkill = new Skill(0, this.skillInput, 'Nouvelle compétence ajoutée',0,0);
     this.skillService.addSkill(newSkill).subscribe(
       (response: Skill) => {
         console.log('Compétence ajoutée avec succès :', response);
@@ -86,7 +86,33 @@ export class SkillComponent implements OnInit {
       }
     );
   }
+  increaseProgress(skill: Skill): void {
+    if (skill.progress < 100) {
+      const newProgress = Math.min(skill.progress + 10, 100); // Limite à 100%
+      this.skillService.updateProgress(skill.id, newProgress).subscribe(() => {
+        skill.progress = newProgress; // Met à jour localement
+      });
+    }
+
+    // Déclencher une fête si le progrès atteint 100%
+    if (skill.progress >= 100) {
+      this.showCelebration();
+    }
+  }
+
+  private showCelebration(): void {
+    console.log('Félicitations ! Vous avez atteint 100 % de progression !');
+  }
+}
+  
+
+
+
+  
+
+
+
   
 
   
-}
+

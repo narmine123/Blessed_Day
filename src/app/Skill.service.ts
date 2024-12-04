@@ -18,6 +18,7 @@ export class SkillService {
           1,
           'Skill 1',
           'Description de la skill 1',
+          0,
           0
           
         ),
@@ -25,15 +26,14 @@ export class SkillService {
           2,
           'Skill 2',
           'Description de la skill 2',
-          1
+          0,
+          0
           
         )
       ];
       
     }
-    getSkill():Observable< Skill[]>{
-      return this.http.get< Skill[]>(this.link);
-    }
+    
 
     getFakeTache(){
       return this.skill;
@@ -56,8 +56,15 @@ export class SkillService {
       return this.http.delete<void>(`${this.link}/${skillId}`); // Suppression de skill via l'API
 
     }
-  
-   
+
+     // Récupérer toutes les compétences
+  getAllSkills(): Observable<Skill[]> {
+    return this.http.get<Skill[]>(this.link);
+  }
+ // Mettre à jour le progrès d'une compétence
+ updateProgress(skillId: number, progress: number): Observable<any> {
+  return this.http.patch(`${this.link}/${skillId}`, { progress });
+}
     
     
    

@@ -70,9 +70,46 @@
                 </div>
                 
                 
+
+
+
+
+                <div class="container mt-5">
+                  <h2 class="text-center mb-4">Learning Progress Tracking</h2>
                 
-              </div>
-            </div>
+                  <!-- Progress Bar -->
+                  <div class="progress" style="height: 25px;">
+                    <div class="progress-bar" role="progressbar"
+                         [style.width]="skill.progress + '%'"  
+                         [attr.aria-valuenow]="skill.progress" 
+                         aria-valuemin="0" aria-valuemax="100">
+                      {{ skill.progress }}% Completed
+                    </div>
+                  </div>
+                
+                  <!-- Button to increase progress -->
+                  <div class="text-center mt-3">
+                    <button class="btn btn-outline-primary" (click)="increaseProgress(skill)">Increase Progress</button>
+                  </div>
+                
+                  <!-- Message or celebration animation -->
+                  <div *ngIf="skill.progress === 100" class="mt-4 text-center">
+                    <h4 class="text-success">Congratulations! You have reached 100% progress! 🎉</h4>
+                    <img src="/assets/congratulations.gif" alt="Celebration GIF" class="img-fluid"
+                         style="max-width: 250px; margin-top: 30px; transition: transform 0.3s ease-in-out;" />
+                  </div>
+                </div>
+                
+
+
+                
+                
+
+
+               
+                
+                
+              
           </div>
         </div>
         <div class="col"></div>
@@ -80,3 +117,6 @@
     </div>
   </div>
 </div>
+
+
+
