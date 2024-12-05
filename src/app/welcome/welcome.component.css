@@ -11,6 +11,11 @@
     background-position: center;
     background-attachment: fixed;
   }
+  .body img{
+    width:"100" ;
+    height:"78" ;
+    margin-top: -15px; 
+  }
   h1 {
     padding-top: 2px;
     margin-top: 2px;

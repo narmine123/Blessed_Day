@@ -1,6 +1,7 @@
 
 .container-fluid{
-    padding-right: 700px;
+    padding-right: 1100px;
+    height: 100px;
  }
  
   
@@ -47,7 +48,7 @@
     font-family: Arial, sans-serif;
     min-height: 100vh;
     margin: 0;
-    background: url('/assets/back1.gif ');
+    background: url('/assets/skill.gif ');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

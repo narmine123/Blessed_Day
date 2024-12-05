@@ -19,7 +19,12 @@ export class SkillService {
           'Skill 1',
           'Description de la skill 1',
           0,
-          0
+          0,
+          '',
+          '',
+          new Date(),
+          null,
+          null
           
         ),
         new Skill(
@@ -27,7 +32,15 @@ export class SkillService {
           'Skill 2',
           'Description de la skill 2',
           0,
-          0
+          0,
+          '',
+          '',
+          new Date(),
+          null,
+          null
+
+
+
           
         )
       ];

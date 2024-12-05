@@ -5,6 +5,8 @@ import { SkillService } from '../Skill.service';
 import { Skill } from '../Skill';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { time } from 'console';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-skill',
@@ -40,7 +42,7 @@ export class SkillComponent implements OnInit {
       return;
     }
 
-    const newSkill = new Skill(0, this.skillInput, 'Nouvelle compétence ajoutée',0,0);
+    const newSkill = new Skill(0, this.skillInput, 'Nouvelle compétence ajoutée',0,0,'','',new Date(),new Date(),new Date());
     this.skillService.addSkill(newSkill).subscribe(
       (response: Skill) => {
         console.log('Compétence ajoutée avec succès :', response);
