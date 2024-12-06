@@ -19,4 +19,7 @@ export class WelcomeComponent {
   goToSkill(){
     this.router.navigate(['/skill']);
   }
+  goToStatic(){
+    this.router.navigate(['/static'])
+  }
 }

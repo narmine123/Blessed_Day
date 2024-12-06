@@ -23,4 +23,7 @@ export class NavbarComponent {
   goToWelcome(){
     this.router.navigate(['/welcome']);
   }
+  goToStatic(){
+    this.router.navigate(['/static'])
+  }
 }

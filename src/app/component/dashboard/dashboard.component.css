@@ -1,5 +1,6 @@
 .container-fluid{
    padding-right: 700px;
+   margin-top: 90px;
 }
 
  
@@ -37,6 +38,12 @@
   width: 40px;
   height: 40px;
   font-size: 16px;
+}
+h4 {
+  font-weight: bold; /* Poids du texte */
+  background: linear-gradient(45deg, #ce93d8, #8356d4); /* Dégradé de couleur */
+  -webkit-background-clip: text; /* Applique le fond en dégradé au texte */
+  color: transparent; 
 }
 
 

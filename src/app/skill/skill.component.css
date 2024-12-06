@@ -2,6 +2,7 @@
 .container-fluid{
     padding-right: 1100px;
     height: 100px;
+    margin-top: 60px;
  }
  
   
@@ -72,7 +73,7 @@ h2{
 }
 
 /* Réduire la taille du texte pour la félicitation */
-h4 {
+/*h4 {
   font-size: 18px;
   font-weight: 500;
   color: #28a745;
@@ -89,6 +90,12 @@ img {
   max-width: 350px;  /* Augmente la largeur de l'image */
   height: auto;  /* Maintient les proportions de l'image */
   margin-top: 30px;
+}
+h4 {
+  font-weight: bold; /* Poids du texte */
+  background: linear-gradient(45deg, #ce93d8, #8356d4); /* Dégradé de couleur */
+  -webkit-background-clip: text; /* Applique le fond en dégradé au texte */
+  color: transparent; 
 }
 
 
